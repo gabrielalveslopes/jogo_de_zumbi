@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#0b0d0c" />
+    <title>Zombie Apocalypse: Last Stand</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0b0d0c; overflow: hidden; }
+      #game { width: 100vw; height: 100vh; }
+      canvas { image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+      #boot-error {
+        display: none; position: fixed; inset: 0; padding: 32px; box-sizing: border-box;
+        color: #d9d9d9; background: #0b0d0c; font-family: monospace; line-height: 1.5;
+      }
+      #boot-error h1 { color: #c0392b; }
+    </style>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div id="boot-error" role="alert"></div>
+    <noscript>Este jogo precisa de JavaScript habilitado.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

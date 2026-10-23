@@ -1,0 +1,33 @@
+{
+  "name": "zombie-apocalypse-last-stand",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Zombie Apocalypse: Last Stand - roguelite de sobrevivência 2D para navegador",
+  "engines": { "node": ">=20.19.0" },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@playwright/test": "^1.55.0",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.0",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.40.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}
