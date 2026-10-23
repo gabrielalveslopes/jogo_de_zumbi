@@ -10,17 +10,6 @@ Projeto acadêmico de **desenvolvimento de jogos assistido por Inteligência Art
 
 *Zombie Apocalypse: Last Stand* é inspirado na fórmula popularizada por *Vampire Survivors*: o jogador se move enquanto as armas atacam automaticamente, enfrenta hordas crescentes, sobe de nível escolhendo melhorias e tenta sobreviver o máximo possível. A identidade, o cenário (uma cidade devastada por uma pandemia zumbi) e todo o conteúdo são originais.
 
-### Contexto acadêmico
-
-| | |
-|---|---|
-| **Instituição** | _preencher_ |
-| **Curso** | _preencher_ |
-| **Disciplina** | _preencher_ |
-| **Professor(a)** | _preencher_ |
-| **Autor(es)** | _preencher_ |
-| **Semestre** | _preencher_ |
-
 ### Objetivo do trabalho
 
 Investigar, na prática, até onde o desenvolvimento assistido por IA (frequentemente chamado de *vibe coding*) consegue ir na construção de um jogo completo, e quais práticas de engenharia são necessárias para que o resultado seja **funcional, testável e sustentável**, e não apenas uma demonstração.
