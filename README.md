@@ -10,6 +10,17 @@ Projeto acadêmico de **desenvolvimento de jogos assistido por Inteligência Art
 
 *Zombie Apocalypse: Last Stand* é inspirado na fórmula popularizada por *Vampire Survivors*: o jogador se move enquanto as armas atacam automaticamente, enfrenta hordas crescentes, sobe de nível escolhendo melhorias e tenta sobreviver o máximo possível. A identidade, o cenário (uma cidade devastada por uma pandemia zumbi) e todo o conteúdo são originais.
 
+### Contexto acadêmico
+
+| | |
+|---|---|
+| **Instituição** | _preencher_ |
+| **Curso** | _preencher_ |
+| **Disciplina** | _preencher_ |
+| **Professor(a)** | _preencher_ |
+| **Autor(es)** | _preencher_ |
+| **Semestre** | _preencher_ |
+
 ### Objetivo do trabalho
 
 Investigar, na prática, até onde o desenvolvimento assistido por IA (frequentemente chamado de *vibe coding*) consegue ir na construção de um jogo completo, e quais práticas de engenharia são necessárias para que o resultado seja **funcional, testável e sustentável**, e não apenas uma demonstração.
@@ -43,7 +54,7 @@ O projeto parte de uma **especificação única e extensa** (prompt de engenhari
 | Fase | Descrição | Status |
 |---|---|---|
 | 1 | Fundação: stack, cenas iniciais, testes configurados | 🟡 Implementada (validação local pendente) |
-| 2 | Protótipo jogável: jogador, inimigos, colisão, primeira arma, morte/reinício | ⬜ Não iniciada |
+| 2 | Protótipo jogável: jogador, inimigos, colisão, primeira arma, morte/reinício | 🟡 Implementada (validação local pendente) |
 | 3 | Núcleo roguelite: XP, níveis, escolha de melhorias | ⬜ Não iniciada |
 | 4 | Desempenho: object pooling, grade espacial, benchmarks | ⬜ Não iniciada |
 | 5 | Conteúdo: 20 famílias de inimigos, 12 armas, 6 personagens, 5 mapas, 5 chefes | ⬜ Não iniciada |
@@ -109,7 +120,10 @@ npx playwright install chromium
 | Tecla | Ação |
 |---|---|
 | **W A S D** / **Setas** | Mover o personagem |
-| **ESC** | Pausar / voltar ao menu |
+| **ESC** | Pausar / continuar |
+| **M** (pausado) | Voltar ao menu |
+| **F3** | Mostrar FPS e contadores |
+| **Enter** / **R** (derrota) | Tentar de novo |
 | **Enter** / **Espaço** | Confirmar no menu |
 | **Mouse** | Interagir com menus |
 
@@ -123,8 +137,12 @@ zombie-apocalypse/
 ├── src/
 │   ├── main.ts           # Ponto de entrada
 │   ├── game/             # Configuração, constantes, EventBus
-│   ├── scenes/           # Boot, Preload, MainMenu, Game
-│   └── utils/            # Funções utilitárias (math, etc.)
+│   ├── scenes/           # Boot, Preload, MainMenu, Game, GameOver
+│   ├── entities/         # Player, Enemy, Projectile
+│   ├── systems/          # Combate, spawn, dificuldade, armas, steering (sem Phaser)
+│   ├── data/             # Definições de inimigos e armas
+│   ├── ui/               # HUD
+│   └── utils/            # math, random (PRNG com semente), format
 ├── tests/
 │   ├── unit/             # Vitest
 │   └── e2e/              # Playwright
@@ -168,7 +186,7 @@ O build usa caminhos relativos (`base: './'`), então a pasta `dist/` pode ser h
 
 ## ⚠️ Limitações conhecidas
 
-- O jogo está em desenvolvimento: **apenas a Fase 1 (fundação) foi implementada**. Ainda não há inimigos, armas, XP, chefes, áudio ou saves.
+- O jogo está em desenvolvimento: **apenas as Fases 1 e 2 foram implementadas**: há 4 tipos de inimigos, uma arma (pistola) e morte/reinício, mas ainda não há XP, melhorias, chefes, áudio ou saves.
 - A escala da tela usa o modo `FIT`, que pode produzir escala fracionária em algumas janelas.
 - Os dados salvos localmente (quando implementados) podem ser apagados pelo navegador e **não são seguros contra edição** pelo jogador.
 - As metas de desempenho (60 FPS, benchmarks de 500 a 3.000 inimigos) são objetivos de teste, não garantias para qualquer computador.

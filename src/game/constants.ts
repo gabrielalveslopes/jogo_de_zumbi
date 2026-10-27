@@ -10,6 +10,7 @@ export const SCENE_KEYS = {
   Preload: 'PreloadScene',
   MainMenu: 'MainMenuScene',
   Game: 'GameScene',
+  GameOver: 'GameOverScene',
 } as const;
 
 export type SceneKey = (typeof SCENE_KEYS)[keyof typeof SCENE_KEYS];
@@ -17,6 +18,10 @@ export type SceneKey = (typeof SCENE_KEYS)[keyof typeof SCENE_KEYS];
 export const TEXTURE_KEYS = {
   Player: 'tex-player',
   Zombie: 'tex-zombie',
+  Runner: 'tex-runner',
+  Brute: 'tex-brute',
+  Crawler: 'tex-crawler',
+  Bullet: 'tex-bullet',
   Floor: 'tex-floor',
 } as const;
 
@@ -32,4 +37,8 @@ export const COLORS = {
 
 export const FONT_FAMILY = 'monospace';
 export const WORLD_SIZE = 2048;
-export const PLAYER_SPEED = 90; // px/s (sandbox da Fase 1)
+export const PLAYER_SPEED = 90; // px/s
+
+/** Profundidades fixas para camadas de UI (entidades usam depth = y). */
+export const DEPTH_HUD = 10000;
+export const DEPTH_OVERLAY = 20000;
