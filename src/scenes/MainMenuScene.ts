@@ -60,7 +60,7 @@ export class MainMenuScene extends Phaser.Scene {
     });
 
     this.add
-      .text(cx, GAME_HEIGHT - 20, 'ENTER / ESPAÇO ou clique em JOGAR  •  Fase 2: protótipo jogável', {
+      .text(cx, GAME_HEIGHT - 20, 'ENTER / ESPAÇO ou clique em JOGAR  •  Fase 3: núcleo roguelite', {
         fontFamily: FONT_FAMILY, fontSize: '10px', color: COLORS.textDim,
       })
       .setOrigin(0.5);

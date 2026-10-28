@@ -6,6 +6,7 @@ export const EventBus = new Phaser.Events.EventEmitter();
 
 export const EVENTS = {
   SceneChanged: 'scene-changed',
+  UpgradeChosen: 'upgrade-chosen',
 } as const;
 
 export function announceScene(key: SceneKey): void {

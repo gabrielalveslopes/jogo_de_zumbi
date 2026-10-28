@@ -5,6 +5,7 @@ import { PreloadScene } from '../scenes/PreloadScene';
 import { MainMenuScene } from '../scenes/MainMenuScene';
 import { GameScene } from '../scenes/GameScene';
 import { GameOverScene } from '../scenes/GameOverScene';
+import { UpgradeScene } from '../scenes/UpgradeScene';
 
 export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
   return {
@@ -23,6 +24,6 @@ export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
     },
     fps: { target: 60, smoothStep: true },
     input: { keyboard: true, mouse: true, touch: true },
-    scene: [BootScene, PreloadScene, MainMenuScene, GameScene, GameOverScene],
+    scene: [BootScene, PreloadScene, MainMenuScene, GameScene, UpgradeScene, GameOverScene],
   };
 }

@@ -1,15 +1,17 @@
 import Phaser from 'phaser';
-import { PLAYER_SPEED, TEXTURE_KEYS } from '../game/constants';
+import { PICKUP_BASE_RADIUS, PLAYER_BASE_HP, PLAYER_SPEED, TEXTURE_KEYS } from '../game/constants';
 import { calculateDamage } from '../systems/combat';
+import type { PlayerStats } from '../systems/PlayerStats';
 import { clamp } from '../utils/math';
 
 export class Player {
   readonly image: Phaser.GameObjects.Image;
   readonly radius = 6;
-  maxHp = 100;
-  hp = 100;
+  maxHp = PLAYER_BASE_HP;
+  hp = PLAYER_BASE_HP;
   armor = 0;
   speed = PLAYER_SPEED;
+  pickupRadius = PICKUP_BASE_RADIUS;
   readonly invulnMs = 700;
   private invulnUntil = 0;
 
@@ -35,6 +37,21 @@ export class Player {
     this.hp = Math.max(0, this.hp - dealt);
     this.invulnUntil = nowMs + this.invulnMs;
     return dealt;
+  }
+
+  /** Recalcula atributos derivados. Aumento de vida máxima também cura a diferença. */
+  applyStats(stats: PlayerStats): void {
+    const oldMax = this.maxHp;
+    this.maxHp = Math.round(PLAYER_BASE_HP * stats.maxHpMult);
+    this.hp = Math.min(this.maxHp, this.hp + Math.max(0, this.maxHp - oldMax));
+    this.armor = stats.armorBonus;
+    this.speed = PLAYER_SPEED * stats.speedMult;
+    this.pickupRadius = PICKUP_BASE_RADIUS * stats.pickupRadiusMult;
+  }
+
+  heal(amount: number): void {
+    if (this.dead || !(amount > 0)) return;
+    this.hp = Math.min(this.maxHp, this.hp + amount);
   }
 
   updateVisual(nowMs: number): void {

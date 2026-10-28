@@ -55,7 +55,7 @@ O projeto parte de uma **especificação única e extensa** (prompt de engenhari
 |---|---|---|
 | 1 | Fundação: stack, cenas iniciais, testes configurados | 🟡 Implementada (validação local pendente) |
 | 2 | Protótipo jogável: jogador, inimigos, colisão, primeira arma, morte/reinício | 🟡 Implementada (validação local pendente) |
-| 3 | Núcleo roguelite: XP, níveis, escolha de melhorias | ⬜ Não iniciada |
+| 3 | Núcleo roguelite: XP, níveis, escolha de melhorias | 🟡 Implementada (validação local pendente) |
 | 4 | Desempenho: object pooling, grade espacial, benchmarks | ⬜ Não iniciada |
 | 5 | Conteúdo: 20 famílias de inimigos, 12 armas, 6 personagens, 5 mapas, 5 chefes | ⬜ Não iniciada |
 | 6 | Progressão: loja permanente, conquistas, estatísticas, saves com migração | ⬜ Não iniciada |
@@ -123,6 +123,7 @@ npx playwright install chromium
 | **ESC** | Pausar / continuar |
 | **M** (pausado) | Voltar ao menu |
 | **F3** | Mostrar FPS e contadores |
+| **← →** + **Enter**, **1-3** ou clique | Escolher melhoria ao subir de nível |
 | **Enter** / **R** (derrota) | Tentar de novo |
 | **Enter** / **Espaço** | Confirmar no menu |
 | **Mouse** | Interagir com menus |
@@ -137,10 +138,10 @@ zombie-apocalypse/
 ├── src/
 │   ├── main.ts           # Ponto de entrada
 │   ├── game/             # Configuração, constantes, EventBus
-│   ├── scenes/           # Boot, Preload, MainMenu, Game, GameOver
-│   ├── entities/         # Player, Enemy, Projectile
-│   ├── systems/          # Combate, spawn, dificuldade, armas, steering (sem Phaser)
-│   ├── data/             # Definições de inimigos e armas
+│   ├── scenes/           # Boot, Preload, MainMenu, Game, Upgrade, GameOver
+│   ├── entities/         # Player, Enemy, Projectile, Pickup
+│   ├── systems/          # Combate, spawn, dificuldade, XP, melhorias, loot (sem Phaser)
+│   ├── data/             # Definições de inimigos, armas e melhorias
 │   ├── ui/               # HUD
 │   └── utils/            # math, random (PRNG com semente), format
 ├── tests/
@@ -186,7 +187,7 @@ O build usa caminhos relativos (`base: './'`), então a pasta `dist/` pode ser h
 
 ## ⚠️ Limitações conhecidas
 
-- O jogo está em desenvolvimento: **apenas as Fases 1 e 2 foram implementadas**: há 4 tipos de inimigos, uma arma (pistola) e morte/reinício, mas ainda não há XP, melhorias, chefes, áudio ou saves.
+- O jogo está em desenvolvimento: **apenas as Fases 1 a 3 foram implementadas**: há 4 tipos de inimigos, uma arma (pistola), XP, níveis e escolha de melhorias com 5 raridades, mas ainda não há chefes, mais armas, áudio ou saves.
 - A escala da tela usa o modo `FIT`, que pode produzir escala fracionária em algumas janelas.
 - Os dados salvos localmente (quando implementados) podem ser apagados pelo navegador e **não são seguros contra edição** pelo jogador.
 - As metas de desempenho (60 FPS, benchmarks de 500 a 3.000 inimigos) são objetivos de teste, não garantias para qualquer computador.

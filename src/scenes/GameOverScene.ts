@@ -6,17 +6,18 @@ import { formatTime } from '../utils/format';
 interface GameOverData {
   timeSec: number;
   kills: number;
+  level: number;
 }
 
 export class GameOverScene extends Phaser.Scene {
-  private stats: GameOverData = { timeSec: 0, kills: 0 };
+  private stats: GameOverData = { timeSec: 0, kills: 0, level: 1 };
 
   constructor() {
     super(SCENE_KEYS.GameOver);
   }
 
   init(data: Partial<GameOverData>): void {
-    this.stats = { timeSec: data.timeSec ?? 0, kills: data.kills ?? 0 };
+    this.stats = { timeSec: data.timeSec ?? 0, kills: data.kills ?? 0, level: data.level ?? 1 };
   }
 
   create(): void {
@@ -28,8 +29,9 @@ export class GameOverScene extends Phaser.Scene {
     text(70, 'VOCÊ MORREU', '32px', '#a3201a');
     text(130, `Sobreviveu por ${formatTime(this.stats.timeSec)}`, '16px', COLORS.text);
     text(156, `Infectados abatidos: ${this.stats.kills}`, '16px', COLORS.text);
-    text(230, 'ENTER / R: tentar de novo', '14px', COLORS.textAccent);
-    text(254, 'ESC: menu principal', '14px', COLORS.textDim);
+    text(182, `Nível alcançado: ${this.stats.level}`, '16px', COLORS.text);
+    text(240, 'ENTER / R: tentar de novo', '14px', COLORS.textAccent);
+    text(264, 'ESC: menu principal', '14px', COLORS.textDim);
     text(GAME_HEIGHT - 16, 'Resultados ainda não são salvos (Fase 6)', '10px', COLORS.textDim);
 
     const kb = this.input.keyboard;

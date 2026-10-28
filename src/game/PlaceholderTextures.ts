@@ -64,6 +64,21 @@ export function createPlaceholderTextures(scene: Phaser.Scene): void {
     g.fillStyle(0xffffff).fillRect(1, 1, 2, 2);
   });
 
+  const gem = (key: string, color: number): void =>
+    make(scene, key, 6, 6, (g) => {
+      g.fillStyle(color);
+      g.fillRect(2, 0, 2, 1).fillRect(1, 1, 4, 1).fillRect(0, 2, 6, 2).fillRect(1, 4, 4, 1).fillRect(2, 5, 2, 1);
+      g.fillStyle(0xffffff, 0.7).fillRect(2, 1, 1, 1);
+    });
+  gem(TEXTURE_KEYS.GemSmall, 0x4aa3ff);
+  gem(TEXTURE_KEYS.GemMedium, 0x4aff9a);
+  gem(TEXTURE_KEYS.GemLarge, 0xb04aff);
+
+  make(scene, TEXTURE_KEYS.Medkit, 9, 9, (g) => {
+    g.fillStyle(0xe8e8e8).fillRect(0, 0, 9, 9);
+    g.fillStyle(0xc0392b).fillRect(3, 1, 3, 7).fillRect(1, 3, 7, 3);
+  });
+
   make(scene, TEXTURE_KEYS.Floor, 32, 32, (g) => {
     g.fillStyle(0x181b19).fillRect(0, 0, 32, 32);
     g.fillStyle(0x1f2321).fillRect(0, 0, 16, 16).fillRect(16, 16, 16, 16);

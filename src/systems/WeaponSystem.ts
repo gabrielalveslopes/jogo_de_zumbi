@@ -12,7 +12,12 @@ export interface FireEvent {
 export class WeaponSystem {
   private cooldown = 0;
 
-  constructor(readonly def: WeaponDef) {}
+  constructor(public def: WeaponDef) {}
+
+  /** Troca os atributos efetivos (ex.: após melhorias) sem perder a recarga atual. */
+  setDef(def: WeaponDef): void {
+    this.def = def;
+  }
 
   reset(): void {
     this.cooldown = 0;

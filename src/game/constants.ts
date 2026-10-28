@@ -11,6 +11,7 @@ export const SCENE_KEYS = {
   MainMenu: 'MainMenuScene',
   Game: 'GameScene',
   GameOver: 'GameOverScene',
+  Upgrade: 'UpgradeScene',
 } as const;
 
 export type SceneKey = (typeof SCENE_KEYS)[keyof typeof SCENE_KEYS];
@@ -22,6 +23,10 @@ export const TEXTURE_KEYS = {
   Brute: 'tex-brute',
   Crawler: 'tex-crawler',
   Bullet: 'tex-bullet',
+  GemSmall: 'tex-gem-small',
+  GemMedium: 'tex-gem-medium',
+  GemLarge: 'tex-gem-large',
+  Medkit: 'tex-medkit',
   Floor: 'tex-floor',
 } as const;
 
@@ -38,6 +43,8 @@ export const COLORS = {
 export const FONT_FAMILY = 'monospace';
 export const WORLD_SIZE = 2048;
 export const PLAYER_SPEED = 90; // px/s
+export const PLAYER_BASE_HP = 100;
+export const PICKUP_BASE_RADIUS = 40; // raio de coleta automática (px)
 
 /** Profundidades fixas para camadas de UI (entidades usam depth = y). */
 export const DEPTH_HUD = 10000;
